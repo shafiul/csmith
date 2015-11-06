@@ -363,6 +363,9 @@ public:
 	static bool signed_char_index(void);
 	static bool signed_char_index(bool p);
 
+	static bool easy_extend(void);
+	static bool easy_extend(bool p);
+
 	/////////////////////////////////////////////////////////
 	static void set_default_settings(void);
 
@@ -602,6 +605,8 @@ private:
 
 	// flag to indicate language
 	static bool lang_cpp_;
+
+	static bool easy_extend_;
 private:
 	CGOptions(void);
 	CGOptions(CGOptions &cgo);

@@ -1392,6 +1392,12 @@ main(int argc, char **argv)
 			CGOptions::init_reducer(filename);
 			continue;
 		}
+
+		if (strcmp (argv[i], "--easy-x") == 0) {
+			CGOptions::easy_extend(true);
+			continue;
+		}
+
 		// OMIT help
 
 		// OMIT compute-hash

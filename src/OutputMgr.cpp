@@ -44,6 +44,7 @@
 #include "ArrayVariable.h"
 #include "random.h"
 #include "util.h"
+#include <fstream>
 
 const char *OutputMgr::hash_func_name = "csmith_compute_hash";
 
@@ -93,6 +94,15 @@ OutputMgr::OutputMgr()
 
 OutputMgr::~OutputMgr()
 {
+
+}
+
+void ee_hash_extra_vars(std::ostream &out){
+	if(!CGOptions::easy_extend())
+		return;
+
+	out << "    transparent_crc(g_slsf_in, \"g_slsf_in\", print_hash_value);" << endl;
+	out << "    transparent_crc(g_slsf_out, \"g_slsf_out\", print_hash_value);" << endl;
 
 }
 
@@ -147,6 +157,10 @@ OutputMgr::OutputMain(std::ostream &out)
 		if (CGOptions::step_hash_by_stmt())
 			OutputMgr::OutputHashFuncInvocation(out, 1);
 		else
+			/* Easy X: hash variables! */
+
+			ee_hash_extra_vars(out);
+
 			HashGlobalVariables(out);
 		if (CGOptions::compute_hash()) {
 			out << "    platform_main_end(crc32_context ^ 0xFFFFFFFFUL, print_hash_value);" << endl;
@@ -277,6 +291,13 @@ OutputMgr::OutputHeader(int argc, char *argv[], unsigned long seed)
 		}
 		out << endl;
 		out << " * Seed:      " << seed << endl;
+
+		if (CGOptions::easy_extend()){
+			out << " * Easy Extend:     true" << endl;
+		}else{
+			out << " * Easy Extend:     false" << endl;
+		}
+
 		out << " */" << endl;
 		out << endl;
 	}
@@ -325,6 +346,23 @@ OutputMgr::OutputHeader(int argc, char *argv[], unsigned long seed)
 	if (CGOptions::step_hash_by_stmt()) {
 		OutputMgr::OutputHashFuncDecl(out);
 		OutputMgr::OutputStepHashFuncDecl(out);
+	}
+
+	if (CGOptions::easy_extend()){
+		/* print contents from ee_pre.c */
+		std::ifstream infile("ee_pre.c");
+
+		if (infile.fail()){
+			out << "/* [E] Could not open file */" << endl;
+		}else {
+			string line;
+			while (std::getline(infile, line)) {
+				out << line << endl;
+			}
+		}
+
+		infile.close();
+
 	}
 }
 
