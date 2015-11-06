@@ -156,12 +156,13 @@ OutputMgr::OutputMain(std::ostream &out)
 
 		if (CGOptions::step_hash_by_stmt())
 			OutputMgr::OutputHashFuncInvocation(out, 1);
-		else
+		else {
 			/* Easy X: hash variables! */
 
 			ee_hash_extra_vars(out);
 
 			HashGlobalVariables(out);
+		}
 		if (CGOptions::compute_hash()) {
 			out << "    platform_main_end(crc32_context ^ 0xFFFFFFFFUL, print_hash_value);" << endl;
 		} else {

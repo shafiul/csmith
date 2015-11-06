@@ -53,7 +53,19 @@ platform_main_end(uint32_t crc, int flag)
 #endif
 
 #ifndef NOT_PRINT_CHECKSUM
-	printf ("checksum = %X\n", crc);
+    char c[100];
+	printf ("checksumz = %X\n", crc);
+	sprintf(c, "%X\n", crc);
+	
+	FILE *fptr;
+    fptr=fopen("aaaaaaaa.txt","w");
+    if(fptr!=NULL){
+        fprintf(fptr,"%s",c);
+        fclose(fptr);
+    }else{
+        printf("!!!!!!!!!! Not able to open file !!!!!!!!!!!!");
+    }
+	
 #endif
 
 #if defined (LOG_WRAPPERS)
