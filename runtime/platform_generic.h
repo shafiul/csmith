@@ -43,6 +43,7 @@ static void
 platform_main_begin(void)
 {
 	/* Nothing to do. */
+	/*crc32_context = 0xFFFFFFFFUL;*/
 }
 
 static void
@@ -53,19 +54,20 @@ platform_main_end(uint32_t crc, int flag)
 #endif
 
 #ifndef NOT_PRINT_CHECKSUM
-    char c[100];
-	printf ("checksumz = %X\n", crc);
+	printf ("checksum = %X\n", crc);
+
+	// Write checksum in a file
+	char c[100];
 	sprintf(c, "%X\n", crc);
-	
+
 	FILE *fptr;
-    fptr=fopen("aaaaaaaa.txt","w");
-    if(fptr!=NULL){
-        fprintf(fptr,"%s",c);
-        fclose(fptr);
-    }else{
-        printf("!!!!!!!!!! Not able to open file !!!!!!!!!!!!");
-    }
-	
+	fptr=fopen("checksum.txt","w");
+	if(fptr!=NULL){
+		fprintf(fptr,"%s",c);
+		fclose(fptr);
+	}else{
+		printf("!!!!!!!!!! Not able to open file to write checksum !!!!!!!!!!!!");
+	}
 #endif
 
 #if defined (LOG_WRAPPERS)
