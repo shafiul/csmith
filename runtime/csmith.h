@@ -50,6 +50,7 @@ static uint32_t crc32_context = 0xFFFFFFFFUL;
 static void 
 crc32_gentab (void)
 {
+	crc32_context = 0xFFFFFFFFUL;
 	uint32_t crc;
 	const uint32_t poly = 0xEDB88320UL;
 	int i, j;
