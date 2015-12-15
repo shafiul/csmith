@@ -266,7 +266,7 @@ ReducerOutputMgr::output_main_func(std::ostream& out)
 {
 	size_t i;
 	const Function* f = reducer->main;
-	if (f->param.size() == 0 && (reducer->main_str == "" || reducer->main_str.find("func_")==0)) {
+	if (f->param.size() == 0 && (reducer->main_str == "" || reducer->main_str.find(get_global_func_prefix())==0)) {
 		out << "int  main(void)" << endl;
 		if (reducer->is_blk_deleted(f->body)) {
 			out << "{" << endl;

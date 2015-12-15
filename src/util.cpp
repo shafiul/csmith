@@ -196,6 +196,18 @@ void output_tab(std::ostream &out, int indent)
 	assert(output);
 	output->output_tab(out, indent);
 }
+
+std::string get_global_func_prefix(void){
+	ostringstream ss;
+	ss << "func_" << CGOptions::globals_prefix() << "_";
+	return ss.str();
+}
+
+std::string get_global_var_prefix(void){
+	ostringstream ss;
+	ss << "g_" << CGOptions::globals_prefix() << "_";
+	return ss.str();
+}
 ///////////////////////////////////////////////////////////////////////////////
 
 // Local Variables:

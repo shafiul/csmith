@@ -366,6 +366,9 @@ public:
 	static bool easy_extend(void);
 	static bool easy_extend(bool p);
 
+	static std::string globals_prefix(void);
+	static std::string globals_prefix(std::string p);
+
 	/////////////////////////////////////////////////////////
 	static void set_default_settings(void);
 
@@ -607,6 +610,7 @@ private:
 	static bool lang_cpp_;
 
 	static bool easy_extend_;
+	static std::string globals_prefix_;	//	a prefix for global variables and functions which will be placed after "g_" and "func_"
 private:
 	CGOptions(void);
 	CGOptions(CGOptions &cgo);

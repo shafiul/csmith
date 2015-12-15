@@ -193,6 +193,7 @@ DEFINE_GETTER_SETTER_BOOL(take_union_field_addr);
 DEFINE_GETTER_SETTER_BOOL(vol_struct_union_fields);
 DEFINE_GETTER_SETTER_BOOL(lang_cpp);
 DEFINE_GETTER_SETTER_BOOL(easy_extend);
+DEFINE_GETTER_SETTER_STRING_REF(globals_prefix);
 
 void
 CGOptions::set_default_builtin_kinds()
@@ -303,6 +304,7 @@ CGOptions::set_default_settings(void)
 	addr_taken_of_locals(true);
 	lang_cpp(false);
 	easy_extend(false);
+	globals_prefix("");
 
 	set_default_builtin_kinds();
 }

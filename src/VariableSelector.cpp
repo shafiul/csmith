@@ -128,7 +128,7 @@ VariableSelector::InitScopeTable()
 static string
 RandomGlobalName(void)
 {
-	return gensym("g_");
+	return gensym(get_global_var_prefix());
 }
 
 // --------------------------------------------------------------

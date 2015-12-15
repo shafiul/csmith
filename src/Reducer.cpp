@@ -133,7 +133,7 @@ Reducer::configure(void)
 			vector<string> strs;
 			StringUtils::split_string(line, strs, "(),[.");
 			for (size_t i=0; i<strs.size(); i++) {
-				if (strs[i].find("g_") == 0) {
+				if (strs[i].find(get_global_var_prefix()) == 0) {
 					const Variable* v = VariableSelector::find_var_by_name(strs[i]);
 					assert(v);
 					add_variable_to_set(used_vars, v);

@@ -1398,6 +1398,18 @@ main(int argc, char **argv)
 			continue;
 		}
 
+		if (strcmp (argv[i], "--globals-prefix") == 0) {
+			string gl_prefix;
+			i++;
+			arg_check(argc, i);
+			if (!parse_string_arg(argv[i], gl_prefix)) {
+				cout<< "please pass prefix for global vars and functions!" << std::endl;
+				exit(-1);
+			}
+			CGOptions::globals_prefix(gl_prefix);
+			continue;
+		}
+
 		// OMIT help
 
 		// OMIT compute-hash

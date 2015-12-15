@@ -483,7 +483,7 @@ Variable::is_global(void) const
 	if (is_field_var()) {
 		return field_var_of->is_global();
 	}
-	return (name.find("g_") == 0);
+	return (name.find(get_global_var_prefix()) == 0);
 }
 
 bool

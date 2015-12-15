@@ -51,6 +51,9 @@ void output_print_str(std::ostream& out, std::string str, std::string str_value,
 void output_open_encloser(const char* symbol, std::ostream &out, int& indent);
 void output_close_encloser(const char* symbol, std::ostream &out, int& indent, bool no_newline = false);
 
+std::string get_global_func_prefix(void);
+std::string get_global_var_prefix(void);
+
 ///////////////////////////////////////////////////////////////////////////////
 
 #endif // UTIL_H
