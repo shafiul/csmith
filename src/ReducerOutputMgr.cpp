@@ -191,7 +191,7 @@ ReducerOutputMgr::output_block(const Block* blk, std::ostream& out, int indent, 
 	output_block_entry_msg(blk, out, indent);
 	if (reducer->dump_stms_in_blocks == blk->func) {
 		string fname = blk->func->name;
-		if (fname == "func_1") fname = "main";
+		if (fname == "func_1") fname = get_main_name();
 		string s = "// " + fname + " block " + StringUtils::int2str(blk->stm_id) + " [";
 		for (i=0; i<blk->stms.size(); i++) {
 			if (i > 0) {

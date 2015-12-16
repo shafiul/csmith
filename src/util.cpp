@@ -208,6 +208,18 @@ std::string get_global_var_prefix(void){
 	ss << "g_" << CGOptions::globals_prefix() << "_";
 	return ss.str();
 }
+
+std::string get_main_name(void){
+	ostringstream ss;
+
+	ss << "main";
+
+	if(CGOptions::suffix_main()){
+		ss << "_" << CGOptions::globals_prefix();
+	}
+
+	return ss.str();
+}
 ///////////////////////////////////////////////////////////////////////////////
 
 // Local Variables:

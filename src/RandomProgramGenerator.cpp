@@ -1398,6 +1398,11 @@ main(int argc, char **argv)
 			continue;
 		}
 
+		if (strcmp (argv[i], "--suffix-main") == 0) {
+			CGOptions::suffix_main(true);
+			continue;
+		}
+
 		if (strcmp (argv[i], "--globals-prefix") == 0) {
 			string gl_prefix;
 			i++;

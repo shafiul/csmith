@@ -53,6 +53,7 @@ void output_close_encloser(const char* symbol, std::ostream &out, int& indent, b
 
 std::string get_global_func_prefix(void);
 std::string get_global_var_prefix(void);
+std::string get_main_name(void);
 
 ///////////////////////////////////////////////////////////////////////////////
 

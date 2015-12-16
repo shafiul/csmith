@@ -1040,14 +1040,14 @@ Reducer::config_stm_reduction(string cmd)
 		size_t pos = cmd.find(" blind");
 		if (pos != string::npos) {
 			cmd = cmd.substr(0, pos);
-			if (cmd == "main") cmd = "func_1";
+			if (cmd == get_main_name()) cmd = "func_1";
 			const Function* f = find_function_by_name(cmd);
 			assert(f);
 			dump_stms_in_blocks = f;
 		}
 		else {
 			// the reducer treats func_1 as main
-			if (cmd == "main") cmd = "func_1";
+			if (cmd == get_main_name()) cmd = "func_1";
 			const Function* f = find_function_by_name(cmd);
 			assert(f);
 			for (i=0; i<f->blocks.size(); i++) {
@@ -1078,7 +1078,7 @@ Reducer::config_expr_reduction(string cmd)
 {
 	if (cmd.find(":") == string::npos) {
 		// the reducer treats func_1 as main
-		if (cmd == "main") cmd = "func_1";
+		if (cmd == get_main_name()) cmd = "func_1";
 		const Function* f = find_function_by_name(cmd);
 		assert(f);
 		rewrite_calls_inside = f;
