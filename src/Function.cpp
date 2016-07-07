@@ -228,7 +228,7 @@ GetFirstFunction(void)
 static string
 RandomFunctionName(void)
 {
-	return gensym("func_");
+	return gensym("x1_func_");
 }
 
 /*-------------------------------------------------------------
